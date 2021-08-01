@@ -121,14 +121,14 @@
             const i = t.querySelector('.sorttable_sorted,.sorttable_sorted_reverse').cellIndex;
             const gallery = document.getElementById('gallery');
             const trs = t.querySelectorAll('tr[data-n]');
-            for(const tr of trs) {
+            trs.forEach((tr,j) => {
                 const n = tr.dataset.n;
                 const cell = tr.cells[i];
                 const alt = cell.textContent.trim() || cell.querySelector('[alt]').getAttribute('alt');
                 const img = gallery.querySelector(`img[data-n = '${n}']`);
                 img.setAttribute('title',alt);
-                gallery.appendChild(img);
-            }
+                img.style.order = j;
+            });
         };
 
         const init = function() {
