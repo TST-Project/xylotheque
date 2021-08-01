@@ -13,7 +13,7 @@
             margin-left: auto;
             margin-right: auto;
             padding-left: 0;
-            hyphens: auto;
+            /*hyphens: auto;*/
         }
         
         #loading {
@@ -35,6 +35,7 @@
             justify-content: center;
             height: 100vh;
             overflow-y: scroll;
+            z-index: 2;
         }
         
         #gallery img {
@@ -140,6 +141,7 @@
 
         const articleClick = function(e) {
             const article = document.querySelector('article');
+            article.style.zIndex = 2;
 
             const highlit = article.querySelector('.highlit');
             if(highlit) highlit.classList.remove('highlit');
@@ -166,9 +168,10 @@
 
             const img = e.target.closest('img');
             if(!img) return;
-
+            
             const article = document.querySelector('article');
             article.style.display = 'flex';
+            article.style.zIndex = 3;
             const n = img.dataset.n;
             const tr = article.querySelector(`tr[data-n='${n}']`);
             tr.classList.add('highlit');
